@@ -9,6 +9,7 @@
   "author": "George Higbie",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.15.4"
+    "express": "^4.15.4",
+    "hbs": "^4.0.1"
   }
 }

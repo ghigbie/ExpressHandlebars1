@@ -4,12 +4,15 @@ const app = express();
 let PORT = process.env.PORT;
 let IP = process.env.IP;
 
+app.set('view engine', 'hbs');
+app.use(express.static(__dirname + '/public')); //takes the absolute path to folder you need to serve
+
 app.get('/', (req, res) => {
     res.send('<h1> Yo puppy!</h1>');
 });
 
 app.get('/about', (req, res) => {
-    res.send('<h1>About page</h1>'); 
+    res.render('about.hbs');
 });
 
 app.get('/bad', (req, res) =>{
