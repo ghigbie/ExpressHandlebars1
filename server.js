@@ -1,11 +1,13 @@
 const express = require('express');
+const hbs = require('hbs');
 const app = express();
 
 let PORT = process.env.PORT;
 let IP = process.env.IP;
 
+hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
-//app.use(express.static(__dirname + '/public')); //takes the absolute path to folder you need to serve
+app.use(express.static(__dirname + '/public')); //takes the absolute path to folder you need to serve
 
 app.get('/', (req, res) => {
     res.render('home.hbs', {
