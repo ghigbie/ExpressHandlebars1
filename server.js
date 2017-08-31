@@ -13,11 +13,15 @@ app.get('/about', (req, res) => {
 });
 
 app.get('/bad', (req, res) =>{
-    res.send('<h1>Page Not Found!</h1>');
+    res.send({
+       errorMessage: 'Unable to handle request' 
+    });
 });
 
 app.get('*', (req, res) => {
-    res.send('<h1>Page Not Found!</h1>');
+    res.send({
+       errorMessage: 'Unable to handle request' 
+    });
 });
 
 app.listen(PORT, IP, ()=> {
