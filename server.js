@@ -9,19 +9,21 @@ hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/public')); //takes the absolute path to folder you need to serve
 
+hbs.registerHelper('getCurrentYear', () => {
+    return new Date().getFullYear();
+});
+
 app.get('/', (req, res) => {
     res.render('home.hbs', {
         pageTitle: 'Home page',
-        welcomeMessage: 'This is really important, so Welcome!',
-        currentYear: new Date().getFullYear()
+        welcomeMessage: 'This is really important, so Welcome!'
     });
 });
 
 app.get('/home', (req, res) => {
     res.render('newHome.hbs', {
         pageTitle: 'Home page',
-        welcomeMessage: 'Welcome yo!',
-        currentYear: new Date().getFullYear()
+        welcomeMessage: 'Welcome yo!'
     });
 });
 
