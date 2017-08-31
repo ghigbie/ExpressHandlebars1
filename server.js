@@ -1,5 +1,6 @@
 const express = require('express');
 const hbs = require('hbs');
+const fs = require('fs');
 const app = express();
 
 let PORT = process.env.PORT;
@@ -8,9 +9,18 @@ let IP = process.env.IP;
 hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/public')); //takes the absolute path to folder you need to serve
-
+app.use((req, res, next) => {
+    let now = new Date().toString();
+    let log =`${now}: ${req.method} ${req.url}`;
+    fs.appendFile('sever.log', now)
+    next();
+});
 hbs.registerHelper('getCurrentYear', () => {
     return new Date().getFullYear();
+});
+
+hbs.registerHelper('screamIt', (text) => {
+    return text.toUpperCase();
 });
 
 app.get('/', (req, res) => {
