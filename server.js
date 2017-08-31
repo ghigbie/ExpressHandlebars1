@@ -5,15 +5,28 @@ let PORT = process.env.PORT;
 let IP = process.env.IP;
 
 app.set('view engine', 'hbs');
-app.use(express.static(__dirname + '/public')); //takes the absolute path to folder you need to serve
+//app.use(express.static(__dirname + '/public')); //takes the absolute path to folder you need to serve
 
 app.get('/', (req, res) => {
-    res.send('<h1> Yo puppy!</h1>');
+    res.render('home.hbs', {
+        pageTitle: 'Home page',
+        welcomeMessage: 'This is really important, so Welcome!',
+        currentYear: new Date().getFullYear()
+    });
+});
+
+app.get('/home', (req, res) => {
+    res.render('newHome.hbs', {
+        pageTitle: 'Home page',
+        welcomeMessage: 'Welcome yo!',
+        currentYear: new Date().getFullYear()
+    });
 });
 
 app.get('/about', (req, res) => {
     res.render('about.hbs', {
         pageTitle: 'About Page',
+        filler: 'This is really important text',
         currentYear: new Date().getFullYear()
     });
 });
