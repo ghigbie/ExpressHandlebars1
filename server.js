@@ -12,7 +12,11 @@ app.use(express.static(__dirname + '/public')); //takes the absolute path to fol
 app.use((req, res, next) => {
     let now = new Date().toString();
     let log =`${now}: ${req.method} ${req.url}`;
-    fs.appendFile('sever.log', now)
+    fs.appendFile('sever.log', log + '\n', (err) => {
+        if(err){
+            console.log(`Unable to append to server.log`);
+        }
+    });
     next();
 });
 hbs.registerHelper('getCurrentYear', () => {
