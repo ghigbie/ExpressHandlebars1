@@ -8,7 +8,6 @@ let IP = process.env.IP;
 
 hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
-app.use(express.static(__dirname + '/public')); //takes the absolute path to folder you need to serve
 app.use((req, res, next) => {
     let now = new Date().toString();
     let log =`${now}: ${req.method} ${req.url}`;
@@ -20,12 +19,13 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use((req, res, next) => {
-   res.render('maintenance.hbs', {
-       maintenanceMessage: 'We are doing some work. We\'ll be back soon : )'
-   });
-});
+// app.use((req, res, next) => {
+//   res.render('maintenance.hbs', {
+//       maintenanceMessage: 'We are doing some work. We\'ll be back soon : )'
+//   });
+// });
 
+app.use(express.static(__dirname + '/public')); //takes the absolute path to folder you need to serve
 
 hbs.registerHelper('getCurrentYear', () => {
     return new Date().getFullYear();
@@ -68,6 +68,7 @@ app.get('*', (req, res) => {
        errorMessage: 'Unable to handle request' 
     });
 });
+
 
 app.listen(PORT, IP, ()=> {
    console.log(`The server is listening on ${PORT}`);
