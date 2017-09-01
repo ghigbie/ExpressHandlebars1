@@ -19,6 +19,14 @@ app.use((req, res, next) => {
     });
     next();
 });
+
+app.use((req, res, next) => {
+   res.render('maintenance.hbs', {
+       maintenanceMessage: 'We are doing some work. We\'ll be back soon : )'
+   });
+});
+
+
 hbs.registerHelper('getCurrentYear', () => {
     return new Date().getFullYear();
 });
