@@ -52,8 +52,7 @@ app.get('/home', (req, res) => {
 app.get('/about', (req, res) => {
     res.render('about.hbs', {
         pageTitle: 'About Page',
-        filler: 'This is really important text',
-        currentYear: new Date().getFullYear()
+        filler: 'This is really important text'
     });
 });
 
@@ -61,7 +60,6 @@ app.get('/projects', (req, res) => {
    res.render('projects.hbs', {
        pageTitle: 'Projects Page',
        filler: 'Here are some really awesome projects:',
-       currentYear: new Date().getFullYear()
    });
 });
 
