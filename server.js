@@ -58,7 +58,7 @@ app.get('/about', (req, res) => {
 });
 
 app.get('/projects', (req, res) => {
-   res.render('porjects.hbs', {
+   res.render('projects.hbs', {
        pageTitle: 'Projects Page',
        filler: 'Here are some really awesome projects:',
        currentYear: new Date().getFullYear()
