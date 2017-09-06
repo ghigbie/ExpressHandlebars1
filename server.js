@@ -59,7 +59,7 @@ app.get('/about', (req, res) => {
 app.get('/projects', (req, res) => {
    res.render('projects.hbs', {
        pageTitle: 'Projects Page',
-       filler: 'Here are some really awesome projects:',
+       filler: 'Here are some really awesome projects:'
    });
 });
 
